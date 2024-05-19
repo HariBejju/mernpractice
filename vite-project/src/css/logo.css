@@ -1,0 +1,32 @@
+.text{
+    font-size: 24px;
+    padding-left: 20px;
+    color: white;
+}
+.link{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    text-decoration: none;
+    
+}
+
+.logos{
+    display: flex;
+    align-items: center;
+
+}
+
+.but1 , .but2 {
+    padding-right: 20px;
+}
+
+.but1log{
+
+}
+
+.flexda{
+    display: flex;
+    align-items: center;
+}
+
