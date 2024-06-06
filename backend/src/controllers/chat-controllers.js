@@ -1,28 +1,56 @@
-import { Groq, getGroqChatCompletion } from "groq-sdk";
-import { configureOpenAI } from "../config/configure.js";
-import user from "../models/user.js";
-
+import { Groq } from "groq-sdk";
+import User from "../models/user.js";
+import { randomUUID } from "crypto";
 export const generateChatCompletion = async (req, res, next) => {
   try {
     const { message } = req.body;
-    const user = await user.findById(res.locals.jwtData.id);
-    if (!user) return res.status(401).json({ message: "bye kaatu" });
-    const chats = user.chats.map(({ role, content }) => ({ role, content }));
-    chats.push({ content: message, role: "user" });
-    user.chats.push({ content: message, role: "user" });
+    console.log(res.locals.jwtData.id)
+    const userId = res.locals.jwtData.id;
+    console.log(userId)
+
+    // Validate userId as ObjectId
+    if (!userId || !userId.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({ message: "Invalid user ID" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) return res.status(401).json({ message: "User not found" });
+
+    // Add user message to chats with custom _id
+    const newChat = { _id: randomUUID(), content: message, role: "user" };
+    user.chats.push(newChat);
+    console.log(user.chats)
+
+    // Initialize Groq API
     const groq = new Groq({
       apiKey: process.env.OPEN_AI_KEY,
     });
-    const chatResponse = groq.chat.completions.create({
-      messages: chats,
+
+    // Call Groq API for chat completion
+    const chatResponse = await groq.chat.completions.create({
+      messages: user.chats.map(({ role, content }) => {
+        console.log(role)
+        // Ensure that each message has the 'content' property
+        if (!content) {
+          throw new Error("Message is missing the 'content' property");
+        }
+        return { role, content };
+      }),
       model: "llama3-8b-8192",
     });
-    const chatCompletion = await getGroqChatCompletion();
-    user.chats.push(chatCompletion.choices[0]?.message?.content || "");
+
+    // Extract the assistant's response and push it to the user's chat history
+    const assistantMessageContent = chatResponse.choices[0]?.message?.content || "";
+    const completionChat = { _id: randomUUID(), content: assistantMessageContent, role: "assistant" };
+    user.chats.push(completionChat);
+
+    // Save the user's updated chat history
     await user.save();
+
+    // Return the updated chats
     return res.status(200).json({ chats: user.chats });
   } catch (error) {
     console.log(error);
-    return res.status(401).json({ message: "something went wrong" });
+    return res.status(500).json({ message: "Something went wrong" });
   }
 };

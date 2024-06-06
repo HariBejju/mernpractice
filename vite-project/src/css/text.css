@@ -1,7 +1,7 @@
 .textcompo{
     background-color:rgba(22, 22, 95, 0.868) ;
     display: flex;
-    font-size: 22px;
+    font-size: 18px;
     padding-bottom: 40px;
     /* justify-content: center; */
     align-items: center;
@@ -14,3 +14,22 @@ border-radius: 10px;
     padding-right: 15px;
     padding-left: 10px;
 }
+
+.textcompo2{
+    background-color:rgba(46, 46, 155, 0.868) ;
+    display: flex;
+    font-size: 18px;
+    padding-bottom: 40px;
+    /* justify-content: center; */
+    align-items: center;
+    height: auto;
+    padding-top: 20px;
+border-radius: 10px;
+} 
+
+.textcompo, .textcompo2 {
+    display: flex;
+    align-items: center;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent text wrapping */
+  }

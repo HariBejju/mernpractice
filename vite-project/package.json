@@ -23,6 +23,10 @@
     "run": "^1.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
     "@iconify/json": "^2.2.216",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
@@ -32,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "vite": "^5.2.0",
+    "vite-plugin-babel": "^1.2.0",
     "vite-plugin-react-icons": "^0.2.0"
   }
 }
