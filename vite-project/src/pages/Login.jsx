@@ -1,10 +1,33 @@
 import React from 'react'
 import "../css/login.css"
-function Login() {
+import {toast} from 'react-hot-toast'
+import { useAuth } from '../context/AuthContext'
+import { loginUser } from '../helpers/api'
+ function Login() {
+  const auth = useAuth()
+  const handleSubmit =async (e)=>{
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const email = formData.get("email")
+    const password = formData.get("password")
+    console.log(email)
+    console.log(password)
+    try{
+      console.log("try la irukenda kanna")
+      toast.loading("signing In",{id:"login"})
+      await auth?.login(email,password)
+      toast.success("signed In Successfully",{id:"login"})
+
+    }
+    catch(error){
+      console.log(error)
+      toast.error("sign in failed da kanna",{id:"login"})
+    }
+  }
   return (
     <div className='login'>
     <div className="login-container">
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <h2>Welcome Back Nenba</h2>
         <div className="form-group">
           <input 

@@ -25,3 +25,7 @@ export const loginValidator=[
     body("password").trim().isLength({min:6}).withMessage("Password should contain atleast 6 characters"),
 
 ]
+
+export const chatCompletionValidator=[
+    body("message").notEmpty().withMessage("Message cant be empty"),
+   ]

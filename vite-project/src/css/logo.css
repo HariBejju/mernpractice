@@ -11,10 +11,10 @@
     
 }
 
-.logos{
+.logoscomponent{
     display: flex;
     align-items: center;
-
+    /* position: fixed; */
 }
 
 .but1 , .but2 {

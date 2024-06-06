@@ -1,0 +1,55 @@
+.chatcompo{
+    display: flex;
+    padding-left: 15px;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-left:15px; */
+    border-radius: 20px;
+    width: 20%;
+    height:450px ;
+    background-color:rgba(15, 15, 68, 0.868) ;
+    font-size: large;
+}
+
+.logo{
+    padding-top: 30px;
+}
+.content{
+    padding-top: 30px;
+    
+}
+.down{
+    line-height: 30px;
+    text-align: center;
+    /* padding-left: 10px; */
+    padding-top: 40px;
+    word-spacing: 2px;
+}
+
+.button{
+    padding-top: 40px;
+}
+
+.right{
+    width: 75%;
+    padding-left: 10px;
+    /* overflow-y: scroll; */
+}
+
+#textbox{
+    top: 0;
+    padding-top: 12px;
+    padding-bottom: 40px;
+    width: 94%;
+    height: auto;
+    color: white;
+    font-size: large;
+    background-color: rgba(66, 66, 156, 0.868);
+}
+#search{
+    width: 40px;
+    height:30px;
+}

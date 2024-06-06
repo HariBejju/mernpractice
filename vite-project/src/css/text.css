@@ -1,0 +1,16 @@
+.textcompo{
+    background-color:rgba(22, 22, 95, 0.868) ;
+    display: flex;
+    font-size: 22px;
+    padding-bottom: 40px;
+    /* justify-content: center; */
+    align-items: center;
+    height: auto;
+    padding-top: 20px;
+border-radius: 10px;
+    
+}
+.logos{
+    padding-right: 15px;
+    padding-left: 10px;
+}

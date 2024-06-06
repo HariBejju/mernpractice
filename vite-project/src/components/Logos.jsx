@@ -8,7 +8,7 @@ function Logos() {
   // console.log("hi")
   console.log(auth?.isLoggedIn)
   return (
-    <div className='logos'>
+    <div className='logoscomponent'>
       
         
       <Link to ="/" className='link'>
