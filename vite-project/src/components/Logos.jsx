@@ -3,14 +3,20 @@ import {Link} from "react-router-dom"
 import NavLink from './NavLink'
 import "../css/logo.css"
 import { useAuth } from '../context/AuthContext'
+
+
 function Logos() {
+  
   const auth = useAuth()
   // console.log("hi")
   console.log(auth?.isLoggedIn)
   const logsout=(e)=>{
-    e.preventDefault()
+  // console.log("hi")
+  e.preventDefault()
+    console.log("logout ra kanna")
     auth.logout()
     console.log("hello")
+    
   }
   return (
     <div className='logoscomponent'>
@@ -27,8 +33,8 @@ function Logos() {
         <NavLink to="/chat" text="GoToChat"  />  
         </div>
         <div className='but2'>
-        <NavLink to="/logout" onClick={logsout} text="Logout" />
-        </div>
+        <button onClick={logsout} className='nav-link' style={{ background: 'none', border: 'none', padding: '0', color: 'inherit', textDecoration: 'underline', cursor: 'pointer' }}>Logout</button>
+           </div>
         </div>
 
         ):(
@@ -37,7 +43,7 @@ function Logos() {
         <NavLink to="/login" text="Login" />  
         </div>
         <div className='but2'>
-        <NavLink to="/"  text="Signup" />
+        <NavLink to="/signup"  text="Signup" />
         </div>
           </>
         )}

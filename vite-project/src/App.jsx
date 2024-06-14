@@ -9,6 +9,8 @@ import { useAuth } from './context/AuthContext.jsx'
 import Chat from './pages/Chat.jsx'
 import Logout from './pages/Logout.jsx'
 import Login from './pages/Login.jsx'
+import Signup from './pages/Signup.jsx'
+import Landing from './pages/Landing.jsx'
 function App() {
   console.log(useAuth()?.isLoggedIn)
   console.log("bye")
@@ -19,9 +21,12 @@ function App() {
    <main> 
     <Logos/>
     <Routes>
+
       <Route path='/chat' element={<Chat/>} />
-      {/* <Route path='/logout' element={<Logout/>} /> */}
+      <Route path='/' element={<Landing/>} />
+      <Route path='/logout' element={<Logout/>} />
       <Route path='/login' element={<Login/>} />
+      <Route path='/signup' element={<Signup/>} />
     </Routes>
     
     <Headers/>

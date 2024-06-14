@@ -1,6 +1,6 @@
 import {createContext, useState,useContext} from 'react'
 import { useEffect } from 'react'
-import { CheckAuthStatus, loginUser, logoutuser } from '../helpers/api.js'
+import { CheckAuthStatus, loginUser, logoutuser, signupUser } from '../helpers/api.js'
 const AuthContext = createContext(null)
 export const AuthProvider =({children})=>{
     const [user,setUser] = useState(null)
@@ -29,7 +29,14 @@ export const AuthProvider =({children})=>{
             setIsLoggedIn(true)
         }
     };
-    const signup = async(name,email,password)=>{}
+    const signup = async(name,email,password)=>{
+        const data = await signupUser(name,email,password);
+        console.log(data)
+        if(data){
+            setUser({email:data.email,name:data.name})
+            setIsLoggedIn(true)
+        }
+    }
     const logout = async()=>{
         console.log("hi nigga")
         await logoutuser()

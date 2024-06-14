@@ -84,16 +84,18 @@ export const userLogin = async (req, res, next) => {
 export const userVerify = async (req, res, next) => {
   try {
     
-    const user = await User.findById({ email:res.locals.jwtData.email });
+    const user = await User.find({ email:res.locals.jwtData.email });
     if (!user) {
       return res.status(401).send("Token not registered");
     }
-    if(user._id.toString()!== res.locals.jwtData.id){
+    console.log(user)
+    console.log(user[0]._id)
+    if(user[0]._id.toString()!== res.locals.jwtData.id){
       return res.status(401).send("Permissions didnt match")
     }
     
    
-    return res.status(200).json({ message: "OK", name:user.name, email:user.email,token:token });
+    return res.status(200).json({ message: "OK", name:user.name, email:user.email });
   } catch (error) {
     console.log(error);
     return res.status(200).json({ message: "Error", cause: error.message });
@@ -102,12 +104,12 @@ export const userVerify = async (req, res, next) => {
 
 export const userLogout = async (req, res, next) => {
   try {
-    
-    const user = await User.findById({ email:res.locals.jwtData.email });
+    console.log("logout working frmds")
+    const user = await User.find({ email:res.locals.jwtData.email });
     if (!user) {
       return res.status(401).send("Token not registered");
     }
-    if(user._id.toString()!== res.locals.jwtData.id){
+    if(user[0]._id.toString()!== res.locals.jwtData.id){
       return res.status(401).send("Permissions didnt match")
     }
     res.clearCookie("auth_token_frnmds",{

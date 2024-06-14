@@ -25,7 +25,7 @@ function Chat() {
     const newMessage = { role: 'user', content };
     setChatMessages((prev) => [...prev, newMessage]);
     const chatData = await sendChatRequest(content);
-    setChatMessages((prev) => [...prev, ...chatData.chats]);
+    setChatMessages((prev) => [ ...chatData.chats]);
   };
 useLayoutEffect(()=>{
   if(auth?.isLoggedIn && auth.user){

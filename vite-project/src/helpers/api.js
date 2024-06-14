@@ -82,4 +82,15 @@ export const logoutuser = async()=>{
 }
 
 
+export const signupUser = async(name,email,password)=>{
+  const api = axios.create({
+      baseURL: 'http://localhost:3000/api/v1', // Change this to your API server's base URL
+    });
+  const res = await api.post("/user/signup",{name,email,password})
+  if(res.status!==200){
+      throw new Error("Unable to signup")
+  }
+  const data = await res.data
+  return data
+}
 

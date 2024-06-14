@@ -6,26 +6,27 @@ import { loginUser } from '../helpers/api.js'
 import { Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-function Login() {
+function Signup() {
   const auth = useAuth()
   const navigate = useNavigate();
   const handleSubmit =async (e)=>{
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
+    const name = formData.get("name")
     const email = formData.get("email")
     const password = formData.get("password")
     console.log(email)
     console.log(password)
     try{
       console.log("try la irukenda kanna")
-      toast.loading("signing In",{id:"login"})
-      await auth?.login(email,password)
-      toast.success("signed In Successfully",{id:"login"})
+      toast.loading("signing In",{id:"signup"})
+      await auth?.signup(name,email,password)
+      toast.success("signed In Successfully",{id:"signup"})
 
     }
     catch(error){
       console.log(error)
-      toast.error("sign in failed da kanna",{id:"login"})
+      toast.error("sign up failed da kanna",{id:"signup"})
     }
   }
   useEffect(()=>{
@@ -36,9 +37,19 @@ function Login() {
   },[auth])
   return (
     <div className='login'>
-    <div className="login-container">
+    <div className="signup-container">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Welcome Back Nenba</h2>
+        <h2>Welcome to MERN gpt</h2>
+        <div className="form-group">
+          <input 
+            type="name" 
+            id="name" 
+            name="name" 
+            required  
+            autoComplete="off"
+          />
+          <label className="text" htmlFor="name">Name</label>
+        </div>
         <div className="form-group">
           <input 
             type="email" 
@@ -59,11 +70,11 @@ function Login() {
           />
           <label className="text" htmlFor="password">Password</label>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
     </div>
   )
 }
 
-export default Login
+export default Signup
