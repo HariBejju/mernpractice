@@ -20,7 +20,7 @@ function App() {
     <Logos/>
     <Routes>
       <Route path='/chat' element={<Chat/>} />
-      <Route path='/logout' element={<Logout/>} />
+      {/* <Route path='/logout' element={<Logout/>} /> */}
       <Route path='/login' element={<Login/>} />
     </Routes>
     

@@ -30,6 +30,8 @@ border-radius: 10px;
 .textcompo, .textcompo2 {
     display: flex;
     align-items: center;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    white-space: nowrap; /* Prevent text wrapping */
-  }
+    height: auto;
+    max-width: 1100px; /* Adjust as needed */
+    margin: 10px auto; /* Center the container */
+    word-wrap: break-word; /* Ensure text wraps within the container */
+    white-space: pre-wrap; /* Preserve whitespace and wrap lines */  }

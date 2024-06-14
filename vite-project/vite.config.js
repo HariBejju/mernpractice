@@ -4,6 +4,8 @@ import babel from 'vite-plugin-babel';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(),
-  ],
+  plugins: [react()],
+    resolve: {
+      extensions: ['.js', '.jsx']
+    }
 })

@@ -1,55 +1,71 @@
-.chatcompo{
+.chatcompo {
     display: flex;
     padding-left: 15px;
+    height: 100vh; /* Full height of the viewport */
 }
-.left{
+
+.left {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding-left:15px; */
     border-radius: 20px;
     width: 20%;
-    height:450px ;
-    background-color:rgba(15, 15, 68, 0.868) ;
+    height: 100%; /* Full height of the chat container */
+    background-color: rgba(15, 15, 68, 0.868);
     font-size: large;
+    padding-top: 20px;
 }
 
-.logo{
+.logo {
     padding-top: 30px;
 }
-.content{
+
+.content {
     padding-top: 30px;
-    
 }
-.down{
+
+.down {
     line-height: 30px;
     text-align: center;
-    /* padding-left: 10px; */
     padding-top: 40px;
     word-spacing: 2px;
 }
 
-.button{
+.button {
     padding-top: 40px;
 }
 
-.right{
+.right {
     width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding-left: 10px;
-    /* overflow-y: scroll; */
+    height: 100%; /* Full height of the chat container */
 }
 
-#textbox{
-    top: 0;
-    padding-top: 12px;
-    padding-bottom: 40px;
-    width: 94%;
-    height: auto;
+.chat-messages {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 10px; /* Space for the input box */
+}
+
+.input-container {
+    position: fixed;
+    bottom: 0;
+    width: 75%; /* Same width as the right container */
+    background-color: rgba(66, 66, 156, 0.868);
+    padding: 10px;
+}
+
+#textbox {
+    width: calc(100% - 50px); /* Adjust based on the search icon size */
     color: white;
     font-size: large;
     background-color: rgba(66, 66, 156, 0.868);
 }
-#search{
+
+#search {
     width: 40px;
-    height:30px;
+    height: 30px;
 }

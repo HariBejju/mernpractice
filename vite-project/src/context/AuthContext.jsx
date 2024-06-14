@@ -1,8 +1,7 @@
 import {createContext, useState,useContext} from 'react'
 import { useEffect } from 'react'
-import { CheckAuthStatus, loginUser } from '../helpers/api.jsx'
+import { CheckAuthStatus, loginUser, logoutuser } from '../helpers/api.js'
 const AuthContext = createContext(null)
-
 export const AuthProvider =({children})=>{
     const [user,setUser] = useState(null)
     const [isLoggedIn,setIsLoggedIn] = useState(false)
@@ -30,8 +29,14 @@ export const AuthProvider =({children})=>{
             setIsLoggedIn(true)
         }
     };
-    const signup = async()=>{}
-    const logout = async()=>{}
+    const signup = async(name,email,password)=>{}
+    const logout = async()=>{
+        console.log("hi nigga")
+        await logoutuser()
+        setIsLoggedIn(false)
+        setUser(null)
+        window.location.reload()
+    }
     const value = {
         user,
         isLoggedIn,

@@ -2,7 +2,7 @@ import React from 'react'
 import "../css/login.css"
 import {toast} from 'react-hot-toast'
 import { useAuth } from '../context/AuthContext'
-import { loginUser } from '../helpers/api'
+import { loginUser } from '../helpers/api.js'
  function Login() {
   const auth = useAuth()
   const handleSubmit =async (e)=>{

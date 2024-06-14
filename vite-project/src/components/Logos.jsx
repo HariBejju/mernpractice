@@ -7,6 +7,11 @@ function Logos() {
   const auth = useAuth()
   // console.log("hi")
   console.log(auth?.isLoggedIn)
+  const logsout=(e)=>{
+    e.preventDefault()
+    auth.logout()
+    console.log("hello")
+  }
   return (
     <div className='logoscomponent'>
       
@@ -22,7 +27,7 @@ function Logos() {
         <NavLink to="/chat" text="GoToChat"  />  
         </div>
         <div className='but2'>
-        <NavLink to="/logout" text="Logout" />
+        <NavLink to="/logout" onClick={logsout} text="Logout" />
         </div>
         </div>
 
@@ -32,7 +37,7 @@ function Logos() {
         <NavLink to="/login" text="Login" />  
         </div>
         <div className='but2'>
-        <NavLink to="/signup" text="Signup" />
+        <NavLink to="/"  text="Signup" />
         </div>
           </>
         )}

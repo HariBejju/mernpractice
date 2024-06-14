@@ -54,3 +54,22 @@ export const generateChatCompletion = async (req, res, next) => {
     return res.status(500).json({ message: "Something went wrong" });
   }
 };
+export const sendChatsToUser = async (req, res, next) => {
+  try {
+    console.log(res.locals.jwtData.id)
+    const user = await User.findById(res.locals.jwtData.id );
+    if (!user) {
+      return res.status(401).send("Toke not registered");
+    }
+    if(user._id.toString()!== res.locals.jwtData.id){
+      return res.status(401).send("Permissions didnt match")
+    }
+    
+   
+    return res.status(200).json({ message: "OK", chats:user.chats });
+  } catch (error) {
+    console.log(error);
+    return res.status(200).json({ message: "Error", cause: error.message });
+  }
+};
+

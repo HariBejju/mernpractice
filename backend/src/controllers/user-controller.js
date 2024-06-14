@@ -86,12 +86,36 @@ export const userVerify = async (req, res, next) => {
     
     const user = await User.findById({ email:res.locals.jwtData.email });
     if (!user) {
-      return res.status(401).send("Toke not registered");
+      return res.status(401).send("Token not registered");
     }
     if(user._id.toString()!== res.locals.jwtData.id){
       return res.status(401).send("Permissions didnt match")
     }
     
+   
+    return res.status(200).json({ message: "OK", name:user.name, email:user.email,token:token });
+  } catch (error) {
+    console.log(error);
+    return res.status(200).json({ message: "Error", cause: error.message });
+  }
+};
+
+export const userLogout = async (req, res, next) => {
+  try {
+    
+    const user = await User.findById({ email:res.locals.jwtData.email });
+    if (!user) {
+      return res.status(401).send("Token not registered");
+    }
+    if(user._id.toString()!== res.locals.jwtData.id){
+      return res.status(401).send("Permissions didnt match")
+    }
+    res.clearCookie("auth_token_frnmds",{
+      httpOnly: true,
+      domain: "localhost",
+      signed:true,
+      path: '/'
+  })
    
     return res.status(200).json({ message: "OK", name:user.name, email:user.email,token:token });
   } catch (error) {
