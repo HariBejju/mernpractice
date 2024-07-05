@@ -1,7 +1,7 @@
 import axios from 'axios'
 export const loginUser = async(email,password)=>{
     const api = axios.create({
-        baseURL: 'https://mernpractice-nu.vercel.app/api/v1', // Change this to your API server's base URL
+        baseURL: 'https://mernpractice-nu.vercel.app', // Change this to your API server's base URL
       });
     const res = await api.post("/user/login",{email,password})
     if(res.status!==200){
@@ -13,7 +13,7 @@ export const loginUser = async(email,password)=>{
 
 export const CheckAuthStatus = async()=>{
     const api = axios.create({
-        baseURL: 'https://mernpractice-nu.vercel.app/api/v1', // Change this to your API server's base URL
+        baseURL: 'https://mernpractice-nu.vercel.app', // Change this to your API server's base URL
       });
       console.log("checkauuth")
       try {
@@ -33,7 +33,7 @@ export const sendChatRequest = async(message)=>{
   
     try {
       const api = axios.create({
-        baseURL: 'https://mernpractice-nu.vercel.app/api/v1', // Change this to your API server's base URL
+        baseURL: 'https://mernpractice-nu.vercel.app', // Change this to your API server's base URL
       });
       const res = await api.post("/chat/new",{message}) // Passing email and password in the request body
       if (res.status !== 200) {
@@ -51,7 +51,7 @@ export const getUserChats = async()=>{
   
   try {
     const api = axios.create({
-      baseURL: 'https://mernpractice-nu.vercel.app/api/v1', // Change this to your API server's base URL
+      baseURL: 'https://mernpractice-nu.vercel.app', // Change this to your API server's base URL
     });
     const res = await api.get("/chat/all-chats") // Passing email and password in the request body
     if (res.status !== 200) {
@@ -69,7 +69,7 @@ export const logoutuser = async()=>{
   
   try {
     const api = axios.create({
-      baseURL: 'https://mernpractice-nu.vercel.app/api/v1', // Change this to your API server's base URL
+      baseURL: 'https://mernpractice-nu.vercel.app', // Change this to your API server's base URL
     });
     const res = await api.get("/user/logout") // Passing email and password in the request body
     if (res.status !== 200) {
@@ -84,7 +84,7 @@ export const logoutuser = async()=>{
 
 export const signupUser = async(name,email,password)=>{
   const api = axios.create({
-      baseURL: 'https://mernpractice-nu.vercel.app/api/v1', // Change this to your API server's base URL
+      baseURL: 'https://mernpractice-nu.vercel.app', // Change this to your API server's base URL
     });
   const res = await api.post("/user/signup",{name,email,password})
   if(res.status!==200){
