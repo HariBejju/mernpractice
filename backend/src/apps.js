@@ -7,7 +7,7 @@ import cors from "cors"
 const app = express()
 dotenv.config()
 //middlewares
-app.use(cors({origin:"https://merngpt-front-end.vercel.app/",methods:["POST","GET"],credentials:true}))
+app.use(cors({origin:"https://merngpt-front-end.vercel.app",methods:["POST","GET"],credentials:true, allowedHeaders: ['Content-Type', 'Authorization']}))
 app.use(express.json())
 
 //remove it in production
