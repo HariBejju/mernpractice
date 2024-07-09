@@ -7,24 +7,15 @@ import cors from "cors"
 const app = express()
 dotenv.config()
 //middlewares
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://merngpt-front-end.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  next();
-});
-
-// OPTIONS handler for preflight requests
-app.options("*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://merngpt-front-end.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.sendStatus(204);
-});
+const corsOpts = {
+    origin: '*',
+    credentials: true,
+    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+    allowedHeaders: ['Content-Type'],
+    exposedHeaders: ['Content-Type']
+};
 app.use(express.json())
-
+app.use(cors(corsOpts));
 //remove it in production
 console.log(process.env.COOKIE_SECRET)
 app.use(cookieParser(process.env.COOKIE_SECRET))
