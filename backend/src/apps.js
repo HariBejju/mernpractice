@@ -8,7 +8,7 @@ const app = express()
 dotenv.config()
 //middlewares
 const corsOpts = {
-    origin: '*',
+    origin: 'https://merngpt-front-end.vercel.app/',
     credentials: true,
     methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
     allowedHeaders: ['Content-Type'],
