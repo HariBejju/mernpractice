@@ -53,7 +53,7 @@ This project is a clone of ChatGPT developed using the MERN stack (MongoDB, Expr
 3. **Frontend Setup**
     - Navigate to the `frontend` directory
         ```bash
-        cd ../frontend
+        cd ../vite-project
         ```
     - Install frontend dependencies
         ```bash
